@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonardo S Garcia</title>
+    <meta
+        name="description"
+        content="Página web personal de Leonardo Samir González García, Estudiante de finanzas en EBC, principiante en programación">
+    <meta
+        name="keywords"
+        content="Leonardo, Samir, Finanzas, programación, principiante, spotify, Música">
+    <meta name="author" content="Leonardo Samir González">
+    <meta name="copyright" content="2026 Leonardo Samir Garcia">
+
+    <!-- ===================================================== -->
+    <!-- TIPOGRAFÍA (Google Fonts)                             -->
+    <!-- ===================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- ===================================================== -->
+    <!-- BOOTSTRAP (estilos)                                   -->
+    <!-- ===================================================== -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- ===================================================== -->
+    <!-- ICONOS DE BOOTSTRAP (Instagram, Facebook, etc.)       -->
+    <!-- ===================================================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Nuestro archivo CSS (si existe) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ===================================================== -->
+    <!-- ESTILOS PROPIOS                                       -->
+    <!-- Los puse aquí dentro para que funcionen aunque        -->
+    <!-- style.css esté vacío o no exista.                     -->
+    <!-- ===================================================== -->
+    <style>
+        /* ------------------------------------------------- */
+        /* PALETA DE LA PÁGINA                               */
+        /* Las "variables" guardan los colores en un solo    */
+        /* lugar. Si cambias uno aquí, cambia en toda la     */
+        /* página. Se usan escribiendo var(--nombre).        */
+        /* ------------------------------------------------- */
+        :root {
+            --negro:       #111111;
+            --gris-oscuro: #3d3d3d;
+            --gris-medio:  #6b6b6b;
+            --gris-claro:  #e6e4e0;
+            --fondo:       #f4f3f1;
+            --blanco:      #ffffff;
+        }
+
+        body {
+            font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--gris-oscuro);
+            background-color: var(--fondo);
+        }
+
+        /* Títulos: delgados, con las letras un poco
+           separadas. Eso es lo que los hace verse formales. */
+        h1, h2, h3, h4, h5 {
+            color: var(--negro);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        /* Línea delgada debajo de cada título de sección */
+        section > h2 {
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gris-claro);
+            margin-bottom: 18px;
+        }
+
+        /* Caja principal que contiene toda la página */
+        .contenedor-principal {
+            background-color: var(--blanco);
+            border: 1px solid var(--gris-claro);
+        }
+
+        /* Cada sección: fondo blanco y un borde muy suave */
+        .bloque {
+            background-color: var(--blanco);
+            border: 1px solid var(--gris-claro);
+            border-radius: 10px;
+        }
+
+        /* Barra de navegación */
+        .menu {
+            background-color: var(--negro);
+            border-radius: 10px;
+        }
+
+        .menu .nav-link {
+            color: var(--gris-claro);
+            font-size: 15px;
+        }
+
+        .menu .nav-link:hover {
+            color: var(--blanco);
+        }
+
+        /* La pestaña activa: blanca con letra negra */
+        .menu .nav-link.active {
+            background-color: var(--blanco);
+            color: var(--negro);
+        }
+
+        /* Tablas y tarjetas sin colores fuertes */
+        .card {
+            border: 1px solid var(--gris-claro);
+            border-radius: 10px;
+        }
+
+        .table > thead th {
+            background-color: var(--negro);
+            color: var(--blanco);
+            font-weight: 500;
+        }
+
+        .presentacion {
+            font-size: 18px;
+            color: var(--gris-medio);
+        }
+
+        /* Enlaces y pestañas en gris/negro, no en azul */
+        a {
+            color: var(--negro);
+        }
+
+        .nav-tabs .nav-link {
+            color: var(--gris-medio);
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--negro);
+            font-weight: 500;
+        }
+
+        /* El recuadro azul que sale al hacer clic en un
+           campo del formulario, ahora en gris. */
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--gris-medio);
+            box-shadow: 0 0 0 .2rem rgba(17, 17, 17, .08);
+        }
+
+        /* ------------------------------------------------- */
+        /* AVISOS (las cajas de "Cargando...", error, etc.)  */
+        /* Fondo gris claro y una línea de color al lado,    */
+        /* en vez del verde o rojo relleno de Bootstrap.     */
+        /* ------------------------------------------------- */
+        .alert {
+            background-color: var(--fondo);
+            border: 1px solid var(--gris-claro);
+            border-left-width: 4px;
+            color: var(--gris-oscuro);
+            border-radius: 8px;
+        }
+
+        .alert-success { border-left-color: #2f7a4d; }
+        .alert-danger  { border-left-color: #a33a3a; }
+        .alert-warning { border-left-color: #a8802c; }
+        .alert-info,
+        .alert-secondary { border-left-color: var(--gris-medio); }
+
+
+        /* Logo del encabezado: tamaño máximo */
+        .logo-principal {
+            max-width: 100px;
+            height: auto;
+        }
+
+        /* ------------------------------------------------- */
+        /* BOTONES FLOTANTES DE REDES SOCIALES               */
+        /* ESTO ERA LO QUE FALTABA: sin este CSS los iconos  */
+        /* se quedan hasta abajo de la página, sin flotar.   */
+        /* ------------------------------------------------- */
+
+        /* La caja que contiene todos los botones */
+        .redes-flotantes {
+            position: fixed;          /* se queda fija aunque hagas scroll */
+            right: 15px;              /* separación del borde derecho */
+            top: 50%;                 /* a la mitad de la pantalla */
+            transform: translateY(-50%); /* la centra exactamente */
+            display: flex;            /* activa flexbox */
+            flex-direction: column;   /* un botón debajo del otro */
+            gap: 10px;                /* espacio entre botones */
+            z-index: 1000;            /* queda encima del resto */
+        }
+
+        /* Cada botón (círculo oscuro) */
+        .red-social {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;       /* lo vuelve círculo */
+            background-color: #212529;
+            color: white;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;  /* centra el icono horizontal */
+            align-items: center;      /* centra el icono vertical */
+            text-decoration: none;    /* quita el subrayado */
+            border: 2px solid white;
+            transition: 0.3s;         /* el cambio de color/tamaño es suave */
+        }
+
+        /* Cuando pasas el mouse encima: el botón crece un poco */
+        .red-social:hover {
+            color: white;
+            transform: scale(1.15);
+        }
+
+        /* Color de cada red al pasar el mouse.         */
+        /* nth-child(1) = el primer botón, (2) = el     */
+        /* segundo, etc. (en el orden del HTML)         */
+
+        /* Instagram */
+        .red-social:nth-child(1):hover {
+            background-color: #E1306C;
+        }
+
+        /* Facebook */
+        .red-social:nth-child(2):hover {
+            background-color: #1877F2;
+        }
+
+        /* X */
+        .red-social:nth-child(3):hover {
+            background-color: black;
+        }
+
+        /* TikTok */
+        .red-social:nth-child(4):hover {
+            background-color: #FE2C55;
+        }
+
+        /* YouTube */
+        .red-social:nth-child(5):hover {
+            background-color: red;
+        }
+
+        /* WhatsApp */
+        .red-social:nth-child(6):hover {
+            background-color: green;
+        }
+
+        /* ------------------------------------------------- */
+        /* GALERÍA DE SERVICIOS                              */
+        /* ------------------------------------------------- */
+
+        /* La tarjeta se levanta un poco al pasar el mouse */
+        .tarjeta-producto {
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+            transition: 0.25s;
+            overflow: hidden;          /* recorta el icono a las esquinas */
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+        }
+
+        /* Franja de color con el icono, en vez de una foto */
+        .producto-icono {
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            color: white;
+            background: linear-gradient(135deg, var(--negro), var(--gris-medio));
+        }
+
+        .precio {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--negro);
+            margin-bottom: 12px;
+        }
+
+        /* ------------------------------------------------- */
+        /* CARRITO DE COMPRAS                                */
+        /* position: fixed hace que el carrito siga          */
+        /* visible aunque bajemos por la página.             */
+        /* z-index lo coloca por encima de lo demás.         */
+        /* ------------------------------------------------- */
+        .carrito {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 280px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 18px;
+            z-index: 2000;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+        }
+
+        /* La lista no crece de más: si hay muchos
+           productos, aparece una barra de scroll. */
+        #listaCarrito {
+            max-height: 220px;
+            overflow-y: auto;
+        }
+
+        /* En pantallas chicas se hace más angosto
+           para no tapar el contenido. */
+        @media (max-width: 767px) {
+            .carrito {
+                width: 200px;
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+
+        /* ------------------------------------------------- */
+        /* JUEGO: silueta del Pokémon                        */
+        /* brightness(0) pinta toda la imagen de negro.      */
+        /* Al acertar, JavaScript quita la clase "silueta".  */
+        /* ------------------------------------------------- */
+        .silueta {
+            filter: brightness(0);
+        }
+
+        #imagenPokemon {
+            max-width: 250px;
+            transition: 0.4s;         /* la imagen se revela suave */
+        }
+
+        /* Tarjetas de testimonios */
+        .testimonio-vip img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;        /* recorta la foto sin deformarla */
+            border-radius: 50%;
+            margin: 15px auto 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===================================================== -->
+<!-- CONTENEDOR PRINCIPAL                                  -->
+<!-- Los colores salen de las variables del <style>.       -->
+<!-- ===================================================== -->
+<div class="container my-4 p-4 contenedor-principal rounded shadow-sm">
+
+    <!-- ================================================= -->
+    <!-- BARRA DE NAVEGACIÓN (fondo oscuro)                -->
+    <!-- ================================================= -->
+    <nav class="mb-4 p-3 menu" aria-label="Navegacion principal">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#intereses">Intereses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#metas">Metas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#habilidades">Habilidades</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#hobbies">Hobbies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#productos">Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#juego">Juego</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contacto">Contacto</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ================================================= -->
+    <!-- INICIO: título, presentación y logo               -->
+    <!-- d-flex pone el texto a la izquierda y el logo     -->
+    <!-- a la derecha. flex-wrap los acomoda en celular.   -->
+    <!-- ================================================= -->
+    <section id="inicio">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+                <h1>Bienvenidos a mi página web</h1>
+                <p class="presentacion">
+                    Hola, soy Samir, estudio Finanzas en la EBC y me gusta la programación.
+                </p>
+            </div>
+
+            <!-- Si tu imagen se llama distinto, cambia "logo.png" -->
+            <img src="logo.png" alt="Logo de mi página" class="logo-principal">
+        </div>
+
+        <!-- Caja blanca con el aviso -->
+        <div class="p-3 bloque">
+            En esta página encontrarás información sobre mis intereses, metas personales,
+            habilidades y hobbies.
+        </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- BOTONES DE BOOTSTRAP (caja blanca)                -->
+    <!-- ================================================= -->
+    <section class="my-4 p-3 bloque">
+        <h2>Botones de Bootstrap</h2>
+        <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-primary">Primario</button>
+            <button type="button" class="btn btn-secondary">Secundario</button>
+            <button type="button" class="btn btn-success">Éxito</button>
+            <button type="button" class="btn btn-danger">Peligro</button>
+            <button type="button" class="btn btn-warning">Advertencia</button>
+        </div>
+
+        <!-- Botón que abre el modal (la ventanita) -->
+        <button
+            type="button"
+            class="btn btn-outline-dark mt-3"
+            data-bs-toggle="modal"
+            data-bs-target="#modalSobreMi">
+            Abrir información personal
+        </button>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- INTERESES Y METAS LADO A LADO                     -->
+    <!-- row = fila, col-md-8 y col-md-4 = columnas.       -->
+    <!-- En celular se ponen una debajo de otra.           -->
+    <!-- ================================================= -->
+    <div class="row g-3">
+
+        <!-- Columna izquierda: Intereses (más ancha) -->
+        <div class="col-md-8">
+            <section id="intereses" class="h-100 p-3 bloque">
+                <h2>Mis intereses</h2>
+                <ul>
+                    <li>Finanzas</li>
+                    <li>Matemáticas</li>
+                    <li>Música</li>
+                </ul>
+                <img src="msc.jpg" alt="Imagen de Música" class="img-fluid rounded" style="max-width: 200px;">
+            </section>
+        </div>
+
+        <!-- Columna derecha: Metas (fondo amarillo clarito) -->
+        <div class="col-md-4">
+            <section id="metas" class="h-100 p-3 bloque">
+                <h2>Metas personales</h2>
+                <ol>
+                    <li>Terminar mi carrera en Finanzas en la EBC</li>
+                    <li>Obtener la certificación AMIB</li>
+                    <li>Trabajar en una casa de bolsa</li>
+                </ol>
+            </section>
+        </div>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- CAPACIDADES, HABILIDADES Y HOBBIES (3 columnas)   -->
+    <!-- ================================================= -->
+    <div class="row g-3 my-2">
+
+        <div class="col-md-4">
+            <section id="capacidades" class="h-100 p-3 bloque">
+                <h2>Capacidades</h2>
+                <ul>
+                    <li>Perspicaz</li>
+                    <li>Liderazgo</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="col-md-4">
+            <section id="habilidades" class="h-100 p-3 bloque">
+                <h2>Habilidades</h2>
+                <ul>
+                    <li>Empatía</li>
+                    <li>Liderazgo</li>
+                    <li>Manejo de emociones</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="col-md-4">
+            <section id="hobbies" class="h-100 p-3 bloque">
+                <h2>Hobbies</h2>
+                <ul>
+                    <li>Videojuegos</li>
+                    <li>Música</li>
+                    <li>Finanzas personales</li>
+                </ul>
+                <img src="contrls.jpg" alt="Imagen de videojuegos" class="img-fluid rounded" style="max-width: 200px;">
+            </section>
+        </div>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- TABLA DE NIVEL POR ÁREA                           -->
+    <!-- ================================================= -->
+    <section class="my-4 p-3 bloque">
+        <h2>Nivel por área</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Área</th>
+                        <th>Nivel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Finanzas</td>
+                        <td>Avanzado</td>
+                    </tr>
+                    <tr>
+                        <td>Programación</td>
+                        <td>Principiante</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- JUEGO: ADIVINA EL POKÉMON (API RESTful)           -->
+    <!-- Nada de esta sección está escrito a mano:         -->
+    <!-- el Pokémon, la imagen y los datos los trae        -->
+    <!-- JavaScript desde la API (ver script.js).          -->
+    <!-- ================================================= -->
+    <section id="juego" class="my-4 p-3 bloque">
+        <h2>Adivina el Pokémon</h2>
+        <p>
+            Este mini juego consume la PokéAPI, un servicio REST gratuito. En cada ronda
+            se pide un Pokémon al azar, se muestra su silueta y hay que escribir su nombre.
+        </p>
+
+        <!-- Mensaje de estado: cargando, error o resultado de la ronda -->
+        <div id="estadoJuego" class="alert alert-secondary" role="status">
+            Cargando Pokémon...
+        </div>
+
+        <div class="row g-3">
+
+            <!-- Columna izquierda: la silueta -->
+            <div class="col-md-5 text-center">
+                <!-- La clase "silueta" pinta la imagen de negro (ver CSS).
+                     Al acertar, JavaScript le quita esa clase. -->
+                <img id="imagenPokemon" class="img-fluid silueta" alt="Silueta del Pokémon" src="">
+            </div>
+
+            <!-- Columna derecha: controles y marcador -->
+            <div class="col-md-7">
+
+                <label for="respuesta" class="form-label">¿Qué Pokémon es?</label>
+                <input type="text" class="form-control" id="respuesta"
+                       placeholder="Escribe el nombre" autocomplete="off">
+
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <button type="button" class="btn btn-dark" id="btnAdivinar">Adivinar</button>
+                    <button type="button" class="btn btn-outline-secondary" id="btnPista">Pista</button>
+                    <button type="button" class="btn btn-outline-secondary" id="btnRendirse">Me rindo</button>
+                    <button type="button" class="btn btn-outline-dark" id="btnNuevo">Nuevo Pokémon</button>
+                </div>
+
+                <!-- Marcador: los números los actualiza JavaScript -->
+                <p class="mt-3 mb-1">
+                    Aciertos: <span id="marcadorAciertos">0</span> de
+                    <span id="marcadorRondas">0</span> rondas
+                </p>
+                <p id="textoPista" class="fst-italic"></p>
+            </div>
+        </div>
+
+        <!-- ------------------------------------------- -->
+        <!-- FICHA DEL POKÉMON                           -->
+        <!-- Se llena cuando se acierta o uno se rinde.  -->
+        <!-- ------------------------------------------- -->
+        <h3 class="h5 mt-4">Ficha del Pokémon</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered align-middle">
+                <thead>
+                    <tr>
+                        <th>Dato</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="fichaPokemon">
+                    <!-- Filas generadas por JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ------------------------------------------- -->
+        <!-- PRUEBAS DE FUNCIONAMIENTO                   -->
+        <!-- Revisan que la API y la interfaz respondan  -->
+        <!-- como se espera. También salen en la consola -->
+        <!-- del navegador (tecla F12).                  -->
+        <!-- ------------------------------------------- -->
+        <h3 class="h5 mt-4">Pruebas de funcionamiento</h3>
+        <button type="button" class="btn btn-dark" id="btnPruebas">Ejecutar pruebas</button>
+        <ul class="list-group mt-3" id="resultadosPruebas">
+            <!-- Cada prueba se agrega como un elemento de la lista -->
+        </ul>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- INFORMACIÓN POR PESTAÑAS                          -->
+    <!-- Cada botón (data-bs-target) abre el div con ese id -->
+    <!-- ================================================= -->
+    <section class="my-4 p-3 bloque">
+        <h2>Información organizada por pestañas</h2>
+
+        <!-- Los botones de las pestañas -->
+        <ul class="nav nav-tabs" id="pestanasPerfil" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="sobre-mi-tab" data-bs-toggle="tab"
+                        data-bs-target="#sobre-mi" type="button" role="tab"
+                        aria-controls="sobre-mi" aria-selected="true">
+                    Sobre mí
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="intereses-tab" data-bs-toggle="tab"
+                        data-bs-target="#intereses-pestana" type="button" role="tab"
+                        aria-controls="intereses-pestana" aria-selected="false">
+                    Intereses
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="metas-tab" data-bs-toggle="tab"
+                        data-bs-target="#metas-pestana" type="button" role="tab"
+                        aria-controls="metas-pestana" aria-selected="false">
+                    Metas
+                </button>
+            </li>
+        </ul>
+
+        <!-- El contenido de cada pestaña (caja blanca) -->
+        <div class="tab-content bg-white border border-top-0 p-3" id="pestanasPerfilContent">
+            <div class="tab-pane fade show active" id="sobre-mi" role="tabpanel" aria-labelledby="sobre-mi-tab">
+                Soy Leonardo Samir, estudio Finanzas en la EBC.
+            </div>
+            <div class="tab-pane fade" id="intereses-pestana" role="tabpanel" aria-labelledby="intereses-tab">
+                Finanzas, Matemáticas y Música.
+            </div>
+            <div class="tab-pane fade" id="metas-pestana" role="tabpanel" aria-labelledby="metas-tab">
+                Mi meta de esta semana es...
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- TARJETAS                                          -->
+    <!-- ================================================= -->
+    <section class="my-4">
+        <h2>Tarjetas de Bootstrap</h2>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Sobre mí</h5>
+                        <p class="card-text">
+                            Soy estudiante de Finanzas y estoy aprendiendo a programar.
+                        </p>
+                        <!-- Abre el mismo modal de "información personal" -->
+                        <button type="button" class="btn btn-outline-dark"
+                                data-bs-toggle="modal" data-bs-target="#modalSobreMi">
+                            Más información
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Finanzas</h5>
+                        <p class="card-text">Me interesa el mundo de las finanzas y la inversión.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Música</h5>
+                        <p class="card-text">Escuchar y descubrir música nueva es uno de mis hobbies favoritos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- GALERÍA DE PRODUCTOS                              -->
+    <!-- Cada botón llama a la función agregarProducto()   -->
+    <!-- que está en script.js, mandándole el nombre y     -->
+    <!-- el precio del producto.                           -->
+    <!-- ================================================= -->
+    <section id="productos" class="my-4 p-3 bloque">
+        <h2>Galería de servicios</h2>
+        <p class="text-secondary">Selecciona uno de mis servicios y agrégalo al carrito.</p>
+
+        <div class="row g-3">
+
+            <!-- Producto 1 -->
+            <div class="col-md-4">
+                <div class="card h-100 tarjeta-producto">
+                    <!-- Encabezado con icono en lugar de foto -->
+                    <div class="producto-icono">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="h5">Asesoría de finanzas personales</h3>
+                        <p class="text-secondary small flex-grow-1">
+                            Sesión de una hora para ordenar ingresos, gastos y deudas.
+                        </p>
+                        <p class="precio">$500.00</p>
+                        <button
+                            class="btn btn-dark w-100"
+                            onclick="agregarProducto('Asesoría de finanzas personales', 500)">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="col-md-4">
+                <div class="card h-100 tarjeta-producto">
+                    <div class="producto-icono">
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="h5">Introducción a la bolsa</h3>
+                        <p class="text-secondary small flex-grow-1">
+                            Cómo funciona una casa de bolsa y cómo se lee una acción.
+                        </p>
+                        <p class="precio">$650.00</p>
+                        <button
+                            class="btn btn-dark w-100"
+                            onclick="agregarProducto('Introducción a la bolsa', 650)">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="col-md-4">
+                <div class="card h-100 tarjeta-producto">
+                    <div class="producto-icono">
+                        <i class="bi bi-piggy-bank"></i>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="h5">Plan de ahorro mensual</h3>
+                        <p class="text-secondary small flex-grow-1">
+                            Un plan a tu medida con metas y fechas claras.
+                        </p>
+                        <p class="precio">$350.00</p>
+                        <button
+                            class="btn btn-dark w-100"
+                            onclick="agregarProducto('Plan de ahorro mensual', 350)">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- CARRUSEL (imágenes que se pasan solas)            -->
+    <!-- ================================================= -->
+    <section class="my-4">
+        <h2>Carrusel</h2>
+        <div id="carruselIntereses" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner rounded">
+                <div class="carousel-item active">
+                    <img src="contrls.jpg" class="d-block w-100" alt="Videojuegos">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Videojuegos</h5>
+                        <p>Uno de mis pasatiempos favoritos.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="msc.jpg" class="d-block w-100" alt="Música">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Música</h5>
+                        <p>Siempre estoy descubriendo artistas nuevos.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Flecha izquierda -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carruselIntereses" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <!-- Flecha derecha -->
+            <button class="carousel-control-next" type="button" data-bs-target="#carruselIntereses" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- TESTIMONIOS                                       -->
+    <!-- ================================================= -->
+    <section id="testimonios" class="my-4">
+        <h2>Testimonios</h2>
+        <p>Esto es lo que dicen algunas personas sobre mí.</p>
+        <div class="row g-3">
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 testimonio-vip">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy59eD1Mg-sXnwRyk3x-2XEut0MHdiwH23YI4rHd2_Qw&s=10"
+                         alt="Foto de testimonio 1">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Juan Pérez</h5>
+                        <p class="card-text">"Samir es muy dedicado y siempre entrega un excelente trabajo."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 testimonio-vip">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIlHs_c8Yb7yxEeDqyLIjTwK_xs6C-3wJfiEoENeejr_QK61Ivf-Ro_IAa&s=10"
+                         alt="Foto de testimonio 2">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">María López</h5>
+                        <p class="card-text">"Su liderazgo y compromiso lo hacen destacar en cada proyecto."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 testimonio-vip">
+                    <img src="https://plus.unsplash.com/premium_photo-1682096259050-361e2989706d?fm=jpg&q=60&w=400&auto=format&fit=crop"
+                         alt="Foto de testimonio 3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Carlos Ramírez</h5>
+                        <p class="card-text">"Un compañero confiable con visión clara de sus metas."</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- FORMULARIO DE CONTACTO                            -->
+    <!-- ================================================= -->
+    <section id="contacto" class="my-4">
+        <h2>Formulario de contacto</h2>
+        <p>Completa los siguientes campos para enviarme un mensaje:</p>
+
+        <form class="p-4 bloque">
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre completo:</label>
+                <input type="text" class="form-control" id="nombre"
+                       placeholder="Ingresa tu nombre completo" required>
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo electrónico:</label>
+                <input type="email" class="form-control" id="correo"
+                       placeholder="Ingresa tu correo electrónico" required>
+            </div>
+
+            <!-- Celular (type="tel" es el tipo correcto para teléfonos) -->
+            <div class="mb-3">
+                <label for="celular" class="form-label">Número de celular:</label>
+                <input type="tel" class="form-control" id="celular"
+                       placeholder="Ingresa tu número de celular" required>
+            </div>
+
+            <!-- Lista desplegable -->
+            <div class="mb-3">
+                <label for="motivo" class="form-label">Motivo del mensaje</label>
+                <select class="form-select" id="motivo" required>
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="programacion">Programación</option>
+                    <option value="finanzas">Finanzas</option>
+                    <option value="proyectos">Proyectos</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+
+            <!-- Casillas (se pueden marcar varias) -->
+            <div class="mb-3">
+                <label class="form-label d-block">Temas de interés</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="temaProgramacion" name="temas" value="programacion">
+                    <label class="form-check-label" for="temaProgramacion">Programación</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="temaFinanzas" name="temas" value="finanzas">
+                    <label class="form-check-label" for="temaFinanzas">Finanzas</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="temaProyectos" name="temas" value="proyectos">
+                    <label class="form-check-label" for="temaProyectos">Proyectos</label>
+                </div>
+            </div>
+
+            <!-- Opciones de radio (solo se puede elegir una) -->
+            <div class="mb-3">
+                <label class="form-label d-block">¿Cómo prefieres recibir respuesta?</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="preferenciaRespuesta" id="prefCorreo" value="correo" checked>
+                    <label class="form-check-label" for="prefCorreo">Correo electrónico</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="preferenciaRespuesta" id="prefTelefono" value="telefono">
+                    <label class="form-check-label" for="prefTelefono">Teléfono</label>
+                </div>
+            </div>
+
+            <!-- Mensaje -->
+            <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe aquí tu mensaje"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-dark px-4">Enviar</button>
+        </form>
+    </section>
+
+</div> <!-- cierre del contenedor principal -->
+
+<!-- ===================================================== -->
+<!-- MODAL "SOBRE MÍ" (ventana que aparece al dar clic)    -->
+<!-- ===================================================== -->
+<div class="modal fade" id="modalSobreMi" tabindex="-1" aria-labelledby="modalSobreMiLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalSobreMiLabel">Más información sobre mí</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                Soy Leonardo Samir. Estudio Finanzas en la Escuela Bancaria y Comercial (EBC)
+                y estoy iniciando en la programación en HTML. Domino mejor Python, pero HTML
+                también es divertido.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================================================== -->
+<!-- CARRITO DE COMPRAS                                    -->
+<!-- Permanece visible en la parte superior derecha.       -->
+<!-- JavaScript actualiza:                                 -->
+<!-- 1. La cantidad de productos.                          -->
+<!-- 2. La lista de productos.                             -->
+<!-- 3. El total de la compra.                             -->
+<!-- ===================================================== -->
+<div class="carrito">
+
+    <h4 class="h5 d-flex justify-content-between align-items-center mb-3">
+        <span><i class="bi bi-cart3"></i> Carrito</span>
+        <span id="contadorCarrito" class="badge bg-dark rounded-pill">0</span>
+    </h4>
+
+    <!-- Aquí aparecerán los productos agregados -->
+    <div id="listaCarrito">
+        <p class="text-muted mb-0">El carrito está vacío</p>
+    </div>
+
+    <hr>
+
+    <!-- Aquí aparecerá el total -->
+    <p class="fw-bold fs-5 mb-2">
+        Total: $<span id="totalCarrito">0.00</span>
+    </p>
+
+    <button type="button" class="btn btn-outline-secondary btn-sm w-100" id="btnVaciar">
+        Vaciar carrito
+    </button>
+</div>
+
+<!-- ===================================================== -->
+<!-- BOTONES FLOTANTES DE REDES SOCIALES                   -->
+<!-- Su apariencia está en el <style> de arriba            -->
+<!-- (.redes-flotantes y .red-social)                      -->
+<!-- ===================================================== -->
+<div class="redes-flotantes">
+
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener"
+       class="red-social" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener"
+       class="red-social" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+    </a>
+
+    <a href="https://x.com/" target="_blank" rel="noopener"
+       class="red-social" aria-label="X">
+        <i class="bi bi-twitter-x"></i>
+    </a>
+
+    <a href="https://www.tiktok.com/" target="_blank" rel="noopener"
+       class="red-social" aria-label="TikTok">
+        <i class="bi bi-tiktok"></i>
+    </a>
+
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener"
+       class="red-social" aria-label="YouTube">
+        <i class="bi bi-youtube"></i>
+    </a>
+
+    <a href="https://wa.me/" target="_blank" rel="noopener"
+       class="red-social" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- BOOTSTRAP (JavaScript): hace funcionar modal,         -->
+<!-- pestañas y carrusel. Siempre va al final del body.    -->
+<!-- ===================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ===================================================== -->
+<!-- NUESTRO JAVASCRIPT                                    -->
+<!-- Pide los datos a la API y llena la tabla.             -->
+<!-- Va después de Bootstrap y al final del body para      -->
+<!-- que el HTML ya exista cuando el código se ejecute.    -->
+<!-- ===================================================== -->
+<script src="script.js"></script>
+</body>
+</html>

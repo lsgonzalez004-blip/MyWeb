@@ -1,0 +1,52 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-seri
+}
+.presetation{ 
+    color: darkblue;
+    font-size: 20px;
+}
+
+/* ===================================================== */
+/* CARRITO DE COMPRAS                                    */
+/* ===================================================== */
+
+/*
+Chicos, position: fixed permite que
+el carrito permanezca visible aunque
+bajemos por la página.
+*/
+
+.carrito {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    width: 280px;
+
+    background-color: white;
+
+    border: 2px solid black;
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    /*
+    z-index permite colocar el carrito
+    por encima de otros elementos.
+    */
+
+    z-index: 2000;
+
+    /*
+    Agregamos una pequeña sombra
+    para distinguirlo de la página.
+    */
+
+    box-shadow: 0 4px 10px
+        rgba(0, 0, 0, 0.2);
+}
+
